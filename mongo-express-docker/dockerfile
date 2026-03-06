@@ -1,0 +1,26 @@
+#imagine python à jour
+
+FROM python:3.14-slim-trixie
+
+#variables d'environnements
+
+#ENV PYTHONDONTWRITEBYTECODE=1
+#ENV PYTHONUNBUFFERED=1
+
+#dossier de travail
+
+WORKDIR /app
+
+#installation des dependances systemes utile
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+#copie le script de migration et le fichier csv
+COPY migration.py .
+COPY healthcare_dataset.csv .
+
+
+# commande de lancement 
+
+CMD ["python", "migration.py"]
