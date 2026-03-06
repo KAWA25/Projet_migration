@@ -27,6 +27,27 @@ Le CSV contient des informations des patients mêlant :
 Données flexible, semi-structurées, susceptibles d’évoluer (nouveaux champs médicaux, nouveaux tests, etc.)
 
 ## 3- Démarche Technique
+  ###### Analyse du besoin client
+  Obectif :
+  - Migrer les données vers une solution Big data scalable
+  - Automatiser l'import des données
+  - Rendre la solution portable et reproductible
+  ###### Analyse et préparation du dataset
+  ###### Conception du Schéma MongoDB
+  ###### Conteneurisation avec Docker
+  Pour rendre la solution portable, l’environnement est conteneurisé avec Docker.
+
+  Docker-compose permet de lancer
+  - MongoDB
+  - le script de migration
+  ###### Développement du cript de migration
+  Le script est développé en Python avec :
+  - Pandas lecture du csv
+  - pymongo : connexion à mongoDB
+  ###### Mise en place de la sécurité
+  ###### Versionning et documentation
+  ###### Etude du déploiement Cloud
+  ###### Architecture Cloud cible
 
 ## 4- Conception du Schéma MongoDB
 
@@ -117,6 +138,13 @@ Nom : docker-compose.yml
 
 ## 7- Schéma de base 
 
+          {
+        "personal_info": {...},
+        "medical_info": {...},
+        "admission_info": {...},
+        "billing_info": {...}
+      }
+
 ## 8- Scalabilité 
 
 -	MongoDB supporte le sharding
@@ -150,6 +178,15 @@ Nom : docker-compose.yml
 -	Haute dispo native
   
 ##### RDS non adapté car orienté SQL
+
+
+
+##### Commandes Docker
+- Docker run "Nom du conteneur" : pour créer et lancer un conteneur
+- docker ps -a : pour lister tous les conteneurs
+- docker images : pour lister les images
+- docker build -t "nom image" : pour builder une image
+- docker run "Nom image" : pour lancer une image
 
 
 
